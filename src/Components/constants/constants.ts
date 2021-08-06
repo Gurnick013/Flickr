@@ -1,0 +1,1 @@
+export const HTTP: string = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=bf5d3ab00a9f7a4fd9b267d13d302c5d&text=&privacy_filter=1&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157719644861399-db915a48ab6e4099&api_sig=087021d3bdc90dca3249a921ae4f1794`
