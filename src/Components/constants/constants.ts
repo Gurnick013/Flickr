@@ -1,1 +1,34 @@
-export const HTTP: string = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=bf5d3ab00a9f7a4fd9b267d13d302c5d&text=&privacy_filter=1&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157719644861399-db915a48ab6e4099&api_sig=087021d3bdc90dca3249a921ae4f1794`
+// interface IPhotos {
+//   photos?: IPhoto;
+//   stat?: string;
+// }
+
+// interface IPhoto {
+//   page?: number;
+//   pages?: number;
+//   perpage?: number;
+//   photo?: Array<IPhotoInfo>;
+//   total?: number;
+// }
+
+// interface IPhotoInfo {
+//   farm?: number;
+//   id?: string;
+//   isfamily?: number;
+//   isfriend?: number;
+//   ispublic?: number;
+//   owner?: string;
+//   secret?: string;
+//   server?: string;
+//   title?: string;
+// }
+
+async function HTTP (text: string) {
+  return await fetch(
+    `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=32fb858701b541977672f6d6ca7b6917&tags=&text=asd&privacy_filter=1&content_type=1&per_page=10&page=&format=json&nojsoncallback=1`
+  );
+}
+
+export default HTTP;
+
+// <img src="//live.staticflickr.com/65535/51365824905_4da19cc602_5k.jpg" class="zoom-xlarge">

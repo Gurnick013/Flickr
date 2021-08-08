@@ -1,20 +1,14 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Bookmarks from "../Bookmarks/Bookmarks";
-import Containers from "../Containers/Containers";
+import { NavLink } from "react-router-dom";
+import BackupIcon from '@material-ui/icons/Backup';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import './LeftAside.css'
 
 const LeftAside: React.FC = () => {
   return (
-    <div>
-      <Switch>
-      <Route path="/containers">
-        <Containers />
-        </Route>
-        <Route path="/bookmarks">
-          <Bookmarks />
-        </Route>
-      </Switch>
-      
+    <div className='leftAside'>
+      <NavLink to="/containers"><BackupIcon/></NavLink>
+      <NavLink to="/bookmarks"><MenuBookIcon/></NavLink>
     </div>
   );
 };
