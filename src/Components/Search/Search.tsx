@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import LeftAside from "../LeftAside/LeftAside";
 import "./Search.css";
 import Containers from "../Containers/Containers";
+import Slider from "../Slider/Slider";
 
 const Search: React.FC = () => {
   const [text, setText] = useState<string>("");
@@ -25,6 +26,7 @@ const Search: React.FC = () => {
             onChange={handelChange}
           />
         </form>
+        <Slider/>
         {text ? (
           <Containers text={text} />
         ) : (
