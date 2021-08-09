@@ -4,6 +4,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Route, Switch } from "react-router";
 import HTTP from "../constants/constants";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardMedia from "@material-ui/core/CardMedia";
+
+import "./Containers.css";
 
 interface ISearch {
   text: string;
@@ -15,37 +21,38 @@ const Containers: React.FC<ISearch> = ({ text }) => {
   const [error, setError] = useState(null);
   console.log(text);
   useEffect(() => {
-    setTimeout(() => {
-      HTTP(text)
-        .then((res: any) => res.json())
-        .then(
-          (result: any) => {
-            setIsLoaded(true);
-            seItems(result.photos.photo);
-          },
-          (error: any) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        );
-    }, 1000);
+    HTTP(text)
+      .then((res: any) => res.json())
+      .then(
+        (result: any) => {
+          setIsLoaded(true);
+          seItems(result.photos.photo);
+        },
+        (error: any) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
   }, [text]);
 
   console.log(items);
 
   const imageItems = items.map((el: any) => {
-    return (
-      <div>
-        <img
-          src={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}.jpg`}
-          alt=""
-        ></img>
-        {/* <img src={`https://www.flickr.com/photos/191064590@N02/51365801024`} alt=''></img> */}
-        <span>{el.title}</span>
-        <Button variant="contained" color="primary">
-          Bookmarks it!
-        </Button>
-      </div>
+    return (      
+      <Card className='card'>
+        <CardActionArea>
+          <CardMedia
+            className=''
+            style={{height: 140}}
+            image={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}.jpg`}
+          />
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Bookmarks it!
+          </Button>
+        </CardActions>
+      </Card>
     );
   });
 
@@ -59,7 +66,7 @@ const Containers: React.FC<ISearch> = ({ text }) => {
     );
   } else {
     return (
-      <div>
+      <div className='containers'>
         <Switch>
           <Route path="/containers">{imageItems}</Route>
           <Route path="/bookmarks">TON</Route>

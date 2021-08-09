@@ -24,11 +24,11 @@
 // }
 
 async function HTTP (text: string) {
+
+  console.log(text)
   return await fetch(
-    `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=32fb858701b541977672f6d6ca7b6917&tags=&text=asd&privacy_filter=1&content_type=1&per_page=10&page=&format=json&nojsoncallback=1`
+    `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=a43bef7f288d9476407e0df31b550d53&per_page=20&page=123&format=json&nojsoncallback=1&auth_token=72157719669091582-d29e18b23d734c8d&api_sig=a9d473b3ee29ca0128144d1a0cbcb4ed`
   );
 }
 
 export default HTTP;
-
-// <img src="//live.staticflickr.com/65535/51365824905_4da19cc602_5k.jpg" class="zoom-xlarge">

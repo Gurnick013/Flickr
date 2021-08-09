@@ -1,0 +1,14 @@
+.imageItems {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    max-width: 345px;
+    margin: 10px 10px;
+}
+
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+}
