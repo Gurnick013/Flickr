@@ -1,21 +1,17 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import './Slider.css'
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 400,
-    flexGrow: 1,
-  },
-});
+export const NumberPageContext = React.createContext(3)
 
-export default function DotsMobileStepper() {
-  const classes = useStyles();
+const Slider: React.FC = () => {
+ 
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState<number>(0);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -28,12 +24,12 @@ export default function DotsMobileStepper() {
   return (
     <MobileStepper
       variant="dots"
-      steps={16}
+      steps={5}
       position="static"
       activeStep={activeStep}
-      className={classes.root}
+      className='root'
       nextButton={
-        <Button size="small" onClick={handleNext} disabled={activeStep === 15}>
+        <Button size="small" onClick={handleNext} disabled={activeStep === 4}>
           Next
           {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
         </Button>
@@ -47,3 +43,5 @@ export default function DotsMobileStepper() {
     />
   );
 }
+
+export default Slider

@@ -3,25 +3,21 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Route, Switch } from "react-router";
-import HTTP from "../constants/constants";
+import HTTP, { ISearch } from "../constants/constants";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
-
 import "./Containers.css";
 
-interface ISearch {
-  text: string;
-}
 
-const Containers: React.FC<ISearch> = ({ text }) => {
+const Containers: React.FC<ISearch> = ({text, page}) => {
   const [items, seItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
-  console.log(text);
+
   useEffect(() => {
-    HTTP(text)
+    HTTP(text, page+1)
       .then((res: any) => res.json())
       .then(
         (result: any) => {
@@ -33,17 +29,17 @@ const Containers: React.FC<ISearch> = ({ text }) => {
           setError(error);
         }
       );
-  }, [text]);
+  }, [text, page]);
 
   console.log(items);
 
   const imageItems = items.map((el: any) => {
-    return (      
-      <Card className='card'>
+    return (
+      <Card className="card" key={el.id}>
         <CardActionArea>
           <CardMedia
-            className=''
-            style={{height: 140}}
+            className=""
+            style={{ height: 140 }}
             image={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}.jpg`}
           />
         </CardActionArea>
@@ -66,9 +62,9 @@ const Containers: React.FC<ISearch> = ({ text }) => {
     );
   } else {
     return (
-      <div className='containers'>
+      <div className="containers">
         <Switch>
-          <Route path="/containers">{imageItems}</Route>
+          <Route path="/">{imageItems}</Route>
           <Route path="/bookmarks">TON</Route>
         </Switch>
       </div>

@@ -7,7 +7,7 @@ import './LeftAside.css'
 const LeftAside: React.FC = () => {
   return (
     <div className='leftAside'>
-      <NavLink to="/containers"><BackupIcon/></NavLink>
+      <NavLink to="/"><BackupIcon/></NavLink>
       <NavLink to="/bookmarks"><MenuBookIcon/></NavLink>
     </div>
   );
